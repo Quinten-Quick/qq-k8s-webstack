@@ -1,0 +1,26 @@
+# Editors (VS Code & IntelliJ IDEA)
+.vscode/
+.idea/
+
+# Windows systeembestanden
+Thumbs.db
+desktop.ini
+
+# Python & FastAPI
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Wachtwoorden, certificaten & Kubernetes-toegang
+.env
+*.pem
+*.key
+*.crt
+kubeconfig
+admin.conf
+
+# Lokale MongoDB-data & Helm-pakketten
+mongo-data/
+data/db/
+*.tgz
