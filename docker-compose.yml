@@ -1,0 +1,28 @@
+services:
+  qq-mongo:
+    image: mongo:7.0
+    container_name: qq-mongo
+    volumes:
+      - mongo-data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+
+  qq-api:
+    build: ./api
+    image: qq-api:1.0
+    container_name: qq-api
+    environment:
+      - MONGO_URI=mongodb://qq-mongo:27017
+    depends_on:
+      - qq-mongo
+
+  qq-frontend:
+    build: ./frontend
+    image: qq-frontend:1.0
+    container_name: qq-frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - qq-api
+
+volumes:
+  mongo-data:
